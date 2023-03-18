@@ -6,8 +6,8 @@ import NotFound404 from './pages/404';
 
 export const App = () => {
   return (
-    <div className="App">
-      <header style={{ height: '5rem', backgroundColor: 'darkcyan' }}>
+    <div className="h-screen bg-slate-900">
+      <header className="h-20 bg-indigo-900 grid place-items-center text-white">
         <h1>Hello world</h1>
       </header>
       <Routes>
