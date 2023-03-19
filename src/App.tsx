@@ -7,7 +7,7 @@ import NotFound404 from './pages/404';
 
 export const App = () => {
   return (
-    <div className="h-screen bg-slate-900 flex flex-col">
+    <div className="h-min-screen bg-slate-900 flex flex-col">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

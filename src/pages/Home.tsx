@@ -1,13 +1,11 @@
-import Card from '../components/Cards/Card/Card';
 import SearchBar from '../components/SearchBar/SearchBar';
-
-import { character } from '../components/Cards/Card/character.example';
+import Cards from '../components/Cards/Cards';
 
 const Home = () => {
   return (
-    <main className="page flex flex-col items-center pt-10">
+    <main className="page flex flex-col gap-10 items-center pt-10 pb-12">
       <SearchBar />
-      <Card {...character} />
+      <Cards />
     </main>
   );
 };

@@ -1,14 +1,14 @@
 import { Component } from 'react';
 
-interface CardProps {
+export interface CardProps {
   mal_id: number;
   url: string;
   images: { jpg: { image_url: string }; webp: { image_url: string; small_image_url: string } };
   name: string;
-  name_kanji: string;
+  name_kanji: string | null;
   nicknames: string[];
   favorites: number;
-  about: string;
+  about: string | null;
 }
 
 export class Card extends Component<CardProps> {
