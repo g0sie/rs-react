@@ -18,7 +18,7 @@ export class Card extends Component<CardProps> {
 
   render() {
     return (
-      <article className="p-5 bg-slate-800 rounded-xl shadow-xl shadow-cyan-300/10">
+      <article className="p-5 bg-slate-800 rounded-xl shadow-xl shadow-cyan-800/10 hover:shadow-cyan-300/10">
         <img src={this.props.images.webp.image_url} />
         <section
           className="flex flex-col items-center
