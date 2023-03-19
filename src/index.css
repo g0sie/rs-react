@@ -17,3 +17,9 @@
   color: var(--cyan-400);
   text-shadow: var(--cyan-300) 0 0 1rem;
 }
+
+.page {
+  max-width: 1600px;
+  margin: 0 auto;
+  flex-grow: 1;
+}
