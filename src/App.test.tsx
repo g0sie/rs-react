@@ -4,9 +4,9 @@ import { MemoryRouter } from 'react-router-dom';
 import { App, WrappedApp } from './App';
 
 describe('App', () => {
-  it('Renders hello world', () => {
+  it('Renders header', () => {
     render(<WrappedApp />);
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Hello world');
+    expect(screen.getByRole('banner')).toBeInTheDocument();
   });
 
   it('Renders 404 page if invalid path', () => {
