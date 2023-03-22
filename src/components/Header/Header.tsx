@@ -5,6 +5,7 @@ type route = { displayName: string; path: string };
 const routes: route[] = [
   { displayName: 'Home', path: '/' },
   { displayName: 'About Us', path: 'about' },
+  { displayName: 'Forms', path: 'forms' },
 ];
 
 export class Header extends Component {
