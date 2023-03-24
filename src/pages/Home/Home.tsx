@@ -24,7 +24,7 @@ class Home extends Component {
 
   render() {
     return (
-      <main className="page flex flex-col gap-10 items-center pt-10 pb-12">
+      <main className="page flex flex-col gap-10 items-center pb-12">
         <SearchBar onSearch={this.filterCharacters.bind(this)} />
         <Cards characters={this.state.characters} />
       </main>
