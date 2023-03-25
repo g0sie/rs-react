@@ -15,7 +15,7 @@ export class Cards extends Component<CardsProps> {
 
   render() {
     return (
-      <div className="grid grid-auto-fill gap-8">
+      <div className="grid grid-auto-fill gap-8 place-items-center">
         {this.props.characters.map((character) => (
           <Card character={character} key={character.mal_id} />
         ))}

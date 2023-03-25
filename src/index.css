@@ -24,6 +24,10 @@
   width: 100%;
 }
 
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
 .page {
   max-width: 1600px;
   width: 100%;
