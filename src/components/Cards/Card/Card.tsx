@@ -41,7 +41,7 @@ export class Card extends Component<CardProps, CardState> {
             </section>
           </div>
           <div className="flip-card-back w-full py-4 pl-4 pr-2">
-            <div className="content overflow-y-auto flex flex-col justify-center h-full pr-2">
+            <div className="content overflow-y-auto h-full pr-2">
               {this.props.character.about?.split('\n').map((p, indx) => (
                 <p
                   className="text-slate-400 pb-1 text-base"
