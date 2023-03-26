@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.hover-text-shadow:hover {
+  transition: 0.4s;
+}
+
+.hover-text-shadow:hover {
+  --cyan-300: rgb(103 232 249);
+  --cyan-400: rgb(34 211 238);
+
+  color: var(--cyan-400);
+  text-shadow: var(--cyan-300) 0 0 1rem;
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, 16.5rem);
+  place-content: center;
+  width: 100%;
+}
+
+.page {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  flex-grow: 1;
+}
