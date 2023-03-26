@@ -11,6 +11,7 @@ interface CreateCardFormState {
   kanjiNameErrorMsg: string;
   birthDateErrorMsg: string;
   imgErrorMsg: string;
+  submitted: boolean;
 }
 
 export class CreateCardForm extends Component<CreateCardFormProps, CreateCardFormState> {
@@ -32,6 +33,7 @@ export class CreateCardForm extends Component<CreateCardFormProps, CreateCardFor
       kanjiNameErrorMsg: '',
       birthDateErrorMsg: '',
       imgErrorMsg: '',
+      submitted: false,
     };
   }
 
@@ -168,7 +170,10 @@ export class CreateCardForm extends Component<CreateCardFormProps, CreateCardFor
     event.preventDefault();
 
     const isValid = this.validateData();
-    if (!isValid) return;
+    if (!isValid) {
+      this.setState({ submitted: false });
+      return;
+    }
 
     const imgUrl = this.imgUrl();
     const character: CharacterInterface = {
@@ -185,6 +190,7 @@ export class CreateCardForm extends Component<CreateCardFormProps, CreateCardFor
       about: this.generateAbout(),
     };
 
+    this.setState({ submitted: true });
     this.props.onSubmit(character);
   }
 
@@ -362,6 +368,9 @@ export class CreateCardForm extends Component<CreateCardFormProps, CreateCardFor
         >
           Create
         </button>
+        {this.state.submitted && (
+          <p className="text-base text-cyan-400 pl-1 pt-1">The data has been saved.</p>
+        )}
       </form>
     );
   }
