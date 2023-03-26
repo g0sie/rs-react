@@ -24,7 +24,7 @@ export class Card extends Component<CardProps, CardState> {
 
   render() {
     return (
-      <div onClick={() => this.flipCard()} className="flip-card">
+      <div onClick={() => this.flipCard()} className="flip-card" data-testid="card">
         <div
           className={[
             'flip-card-inner',
