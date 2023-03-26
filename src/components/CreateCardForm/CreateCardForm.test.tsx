@@ -4,11 +4,11 @@ import CreateCardForm from './CreateCardForm';
 
 describe('CreateCardForm', () => {
   it('Renders the form', () => {
-    render(<CreateCardForm />);
+    render(<CreateCardForm onSubmit={() => {}} />);
     expect(screen.getByTestId('create-card')).toBeInTheDocument();
-    expect(screen.getByLabelText('Name')).toBeInTheDocument();
+    expect(screen.getByLabelText('Name*')).toBeInTheDocument();
     expect(screen.getByLabelText('Name in kanji')).toBeInTheDocument();
-    expect(screen.getByLabelText('Date of birth')).toBeInTheDocument();
+    expect(screen.getByLabelText('Date of birth*')).toBeInTheDocument();
     expect(screen.getByLabelText('Pronouns')).toBeInTheDocument();
     expect(screen.getByText('Blood type')).toBeInTheDocument();
     expect(screen.getByLabelText('A')).toBeChecked();
@@ -17,7 +17,7 @@ describe('CreateCardForm', () => {
     expect(screen.getByLabelText('AB')).not.toBeChecked();
     expect(screen.getByText('Is dead')).toBeInTheDocument();
     expect(screen.getByLabelText('dead')).not.toBeChecked();
-    expect(screen.getByLabelText('Upload image')).toBeInTheDocument();
+    expect(screen.getByLabelText('Upload image*')).toBeInTheDocument();
     expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
   });
 });

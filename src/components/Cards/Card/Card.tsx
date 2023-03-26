@@ -36,15 +36,15 @@ export class Card extends Component<CardProps, CardState> {
             <img src={this.props.character.images.webp.image_url} />
             <section className="flex flex-col items-center pt-3">
               <h2 className="text-slate-200 text-2xl">{this.props.character.name}</h2>
-              <p className="text-slate-400 text-md">{this.props.character.name_kanji}</p>
+              <p className="text-slate-400 text-base">{this.props.character.name_kanji}</p>
               <p className="text-cyan-300 text-lg">🩵 {this.props.character.favorites}</p>
             </section>
           </div>
-          <div className="flip-card-back py-4 pl-4 pr-2">
-            <div className="content overflow-y-auto h-full pr-2">
+          <div className="flip-card-back w-full py-4 pl-4 pr-2">
+            <div className="content overflow-y-auto flex flex-col justify-center h-full pr-2">
               {this.props.character.about?.split('\n').map((p, indx) => (
                 <p
-                  className="text-slate-400 pb-1"
+                  className="text-slate-400 pb-1 text-base"
                   key={`c-${this.props.character.mal_id}-p-${indx}`}
                 >
                   {p}
