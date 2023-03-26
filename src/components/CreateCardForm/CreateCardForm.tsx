@@ -190,8 +190,22 @@ export class CreateCardForm extends Component<CreateCardFormProps, CreateCardFor
       about: this.generateAbout(),
     };
 
-    this.setState({ submitted: true });
     this.props.onSubmit(character);
+    this.setState({ submitted: true });
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.getInputElement(this.nameRef).value = '';
+    this.getInputElement(this.kanjiNameRef).value = '';
+    this.getInputElement(this.birthDateRef).value = '';
+    this.getSelectElement(this.pronounsRef).value = 'he';
+    this.getInputElement(this.blood_A_Ref).checked = true;
+    this.getInputElement(this.blood_B_Ref).checked = false;
+    this.getInputElement(this.blood_O_Ref).checked = false;
+    this.getInputElement(this.blood_AB_Ref).checked = false;
+    this.getInputElement(this.deadRef).checked = false;
+    this.getInputElement(this.imgRef).value = '';
   }
 
   render() {
