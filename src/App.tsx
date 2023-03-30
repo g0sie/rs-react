@@ -1,28 +1,40 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from 'react-router-dom';
 
-import Header from './components/Header/Header';
+import RootLayout from './layouts/RootLayout';
 
-import routes from './pages/routes';
+import Home from './pages/Home/Home';
+import About from './pages/About';
+import Forms from './pages/Forms/Forms';
 import NotFound404 from './pages/404';
 
-export const App = () => {
-  return (
-    <div className="min-h-screen bg-slate-900 flex flex-col">
-      <Header />
-      <Routes>
-        {routes.map((route, indx) => (
-          <Route path={route.path} element={route.pageElement} key={indx} />
-        ))}
-        <Route path="*" element={<NotFound404 />} />
-      </Routes>
-    </div>
-  );
-};
+interface page {
+  path: string;
+  name: string;
+  element: JSX.Element;
+}
 
-export const WrappedApp = () => {
-  return (
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
+export const pages: page[] = [
+  { name: 'Home', path: '/', element: <Home /> },
+  { name: 'About Us', path: 'about', element: <About /> },
+  { name: 'Forms', path: 'forms', element: <Forms /> },
+];
+
+export const routes = createRoutesFromElements(
+  <Route path="/" element={<RootLayout />}>
+    {pages.map((page, indx) => (
+      <Route path={page.path} element={page.element} key={indx} />
+    ))}
+    <Route path="*" element={<NotFound404 />} />
+  </Route>
+);
+
+const router = createBrowserRouter(routes);
+
+export const App = () => {
+  return <RouterProvider router={router} />;
 };
