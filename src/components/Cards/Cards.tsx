@@ -1,21 +1,23 @@
 import { Component } from 'react';
 
-import { characters } from './characters.example';
+import Card from './Card/Card';
 
-import Card, { CardProps } from './Card/Card';
+import { CharacterInterface } from './CharacterInterface';
 
-interface CardState {
-  characters: CardProps[];
+interface CardsProps {
+  characters: CharacterInterface[];
 }
 
-export class Cards extends Component {
-  state: CardState = { characters: characters };
+export class Cards extends Component<CardsProps> {
+  constructor(props: CardsProps) {
+    super(props);
+  }
 
   render() {
     return (
-      <div className="grid grid-auto-fill gap-8">
-        {this.state.characters.map((character) => (
-          <Card {...character} key={character.mal_id} />
+      <div className="grid grid-auto-fill gap-8 place-items-stretch" data-testid="cards">
+        {this.props.characters.map((character) => (
+          <Card character={character} key={character.mal_id} />
         ))}
       </div>
     );

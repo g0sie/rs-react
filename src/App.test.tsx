@@ -9,12 +9,23 @@ describe('App', () => {
     expect(screen.getByRole('banner')).toBeInTheDocument();
   });
 
-  it('Renders 404 page if invalid path', () => {
-    render(
-      <MemoryRouter initialEntries={['/invalid-path']}>
-        <App />
-      </MemoryRouter>
-    );
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('404');
+  describe('Routes', () => {
+    it('Renders About page on /about', () => {
+      render(
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      );
+      expect(screen.getByText('About Us')).toBeInTheDocument();
+    });
+
+    it('Renders 404 page if invalid path', () => {
+      render(
+        <MemoryRouter initialEntries={['/invalid-path']}>
+          <App />
+        </MemoryRouter>
+      );
+      expect(screen.getByText('404')).toBeInTheDocument();
+    });
   });
 });

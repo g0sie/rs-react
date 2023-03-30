@@ -1,11 +1,7 @@
 import { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-type route = { displayName: string; path: string };
-const routes: route[] = [
-  { displayName: 'Home', path: '/' },
-  { displayName: 'About Us', path: 'about' },
-];
+import routes from '../../pages/routes';
 
 export class Header extends Component {
   render() {
@@ -19,7 +15,7 @@ export class Header extends Component {
                   className={({ isActive }) => (isActive ? 'text-cyan-300' : 'hover-text-shadow')}
                   to={route.path}
                 >
-                  {route.displayName}
+                  {route.navName}
                 </NavLink>
               </li>
             ))}
