@@ -3,7 +3,7 @@ import { Component } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Cards from '../../components/Cards/Cards';
 
-import { CharacterInterface } from '../../components/Cards/CharacterInterface';
+import { CharacterInterface } from '../../interfaces/CharacterInterface';
 import { characters } from '../../components/Cards/characters.example';
 
 interface CardState {

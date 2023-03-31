@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import Card from './Card/Card';
 
-import { CharacterInterface } from './CharacterInterface';
+import { CharacterInterface } from '../../interfaces/CharacterInterface';
 
 interface CardsProps {
   characters: CharacterInterface[];

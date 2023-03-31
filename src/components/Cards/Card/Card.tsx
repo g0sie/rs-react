@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { CharacterInterface } from '../CharacterInterface';
+import { CharacterInterface } from '../../../interfaces/CharacterInterface';
 
 import './Card.css';
 

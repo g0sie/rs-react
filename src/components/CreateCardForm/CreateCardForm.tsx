@@ -1,6 +1,6 @@
 import { Component, createRef, FormEvent, RefObject } from 'react';
 
-import { CharacterInterface } from '../Cards/CharacterInterface';
+import { CharacterInterface } from '../../interfaces/CharacterInterface';
 
 interface CreateCardFormProps {
   onSubmit: (character: CharacterInterface) => void;

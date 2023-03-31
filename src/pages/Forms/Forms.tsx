@@ -3,7 +3,7 @@ import { Component } from 'react';
 import CreateCardForm from '../../components/CreateCardForm/CreateCardForm';
 import Cards from '../../components/Cards/Cards';
 
-import { CharacterInterface } from '../../components/Cards/CharacterInterface';
+import { CharacterInterface } from '../../interfaces/CharacterInterface';
 
 interface FormsState {
   characters: CharacterInterface[];
