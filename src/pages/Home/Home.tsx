@@ -1,35 +1,29 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Cards from '../../components/Cards/Cards';
 
 import { CharacterInterface } from '../../interfaces/CharacterInterface';
-import { characters } from '../../components/Cards/characters.example';
+import { characters as initialCharacters } from '../../components/Cards/characters.example';
 
-interface CardState {
-  characters: CharacterInterface[];
-}
+const Home = () => {
+  const [characters, setCharacters] = useState<CharacterInterface[]>(initialCharacters);
 
-class Home extends Component {
-  state: CardState = { characters: characters };
-
-  termMatchesCharacter(term: string, character: CharacterInterface): boolean {
+  const termMatchesCharacter = (term: string, character: CharacterInterface) => {
     return character.name.toLowerCase().includes(term.toLowerCase());
-  }
+  };
 
-  filterCharacters(term: string): void {
-    const filtered = characters.filter((character) => this.termMatchesCharacter(term, character));
-    this.setState({ characters: filtered });
-  }
+  const filterCharacters = (term: string) => {
+    const filtered = initialCharacters.filter((character) => termMatchesCharacter(term, character));
+    setCharacters(filtered);
+  };
 
-  render() {
-    return (
-      <main className="page flex flex-col gap-10 items-center pb-12">
-        <SearchBar onSearch={this.filterCharacters.bind(this)} />
-        <Cards characters={this.state.characters} />
-      </main>
-    );
-  }
-}
+  return (
+    <main className="page flex flex-col gap-10 items-center pb-12">
+      <SearchBar onSearch={filterCharacters} />
+      <Cards characters={characters} />
+    </main>
+  );
+};
 
 export default Home;
