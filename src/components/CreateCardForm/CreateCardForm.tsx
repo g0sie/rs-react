@@ -15,7 +15,7 @@ interface FormData {
   pronouns: 'he' | 'she' | 'they';
   bloodType: 'A' | 'B' | 'O' | 'AB';
   isDead: boolean;
-  images?: any;
+  images?: FileList;
 }
 
 interface CreateCardFormProps {
@@ -68,7 +68,8 @@ const CreateCardForm = (props: CreateCardFormProps) => {
   }
 
   function getCharacterFromData(data: FormData) {
-    const imageUrl = URL.createObjectURL(data.images[0]);
+    if (!data.images) throw new Error('There should be an image.');
+    const imageUrl = URL.createObjectURL(data.images?.[0]);
 
     function about() {
       const birthDate = new Date(data.birthDate).toLocaleDateString();
@@ -101,7 +102,7 @@ const CreateCardForm = (props: CreateCardFormProps) => {
 
   useEffect(() => {
     if (isDirty && !isValid) setShowDataHasBeenSaved(false);
-  }, [isDirty]);
+  }, [isDirty, isValid]);
 
   return (
     <form
