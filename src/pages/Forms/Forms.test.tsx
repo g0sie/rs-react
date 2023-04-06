@@ -43,7 +43,7 @@ describe('Forms', () => {
     render(<Forms />);
     expect(screen.getByTestId('cards')).toBeInTheDocument();
   });
-  it('Creates a card successfully', () => {
+  it('Creates a card successfully', async () => {
     global.URL.createObjectURL = vi.fn();
     render(<Forms />);
     const {
@@ -66,6 +66,7 @@ describe('Forms', () => {
     fireEvent.change(imgInput, { target: { files: [imgFile] } });
     fireEvent.click(submitBtn);
 
+    await screen.findByText('The data has been saved.');
     expect(screen.getByText('The data has been saved.')).toBeInTheDocument();
     expect(screen.getByText('Awesome Name')).toBeInTheDocument();
     expect(screen.getAllByTestId('card')).toHaveLength(1);

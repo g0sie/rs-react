@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Cards from './Cards';
 
 import { characters } from './characters.example';
-import { CharacterInterface } from './CharacterInterface';
+import { CharacterInterface } from '../../interfaces/CharacterInterface';
 
 const naruto: CharacterInterface | undefined = characters.find(
   (character) => character.name === 'Naruto Uzumaki'
