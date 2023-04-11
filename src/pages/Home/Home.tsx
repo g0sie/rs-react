@@ -6,21 +6,21 @@ import Cards from '../../components/Cards/Cards';
 import { CharacterInterface } from '../../interfaces/CharacterInterface';
 import { characters as initialCharacters } from '../../components/Cards/characters.example';
 
+import axios from '../../api/axios';
+
 const Home = () => {
   const [characters, setCharacters] = useState<CharacterInterface[]>(initialCharacters);
 
-  const termMatchesCharacter = (term: string, character: CharacterInterface) => {
-    return character.name.toLowerCase().includes(term.toLowerCase());
-  };
-
-  const filterCharacters = (term: string) => {
-    const filtered = initialCharacters.filter((character) => termMatchesCharacter(term, character));
-    setCharacters(filtered);
+  const searchCharacters = async (term: string) => {
+    const response = await axios.get('characters', { params: { q: term } });
+    const data = JSON.parse(await response.data);
+    const characters = data.data;
+    setCharacters(characters);
   };
 
   return (
     <main className="page flex flex-col gap-10 items-center pb-12">
-      <SearchBar onSearch={filterCharacters} />
+      <SearchBar onSearch={searchCharacters} />
       <Cards characters={characters} />
     </main>
   );
