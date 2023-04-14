@@ -1,15 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Cards from '../../components/Cards/Cards';
 
 import { CharacterInterface } from '../../interfaces/CharacterInterface';
-import { characters as initialCharacters } from '../../components/Cards/characters.example';
 
 import axios from '../../api/axios';
 
 const Home = () => {
-  const [characters, setCharacters] = useState<CharacterInterface[]>(initialCharacters);
+  const [characters, setCharacters] = useState<CharacterInterface[]>([]);
 
   const searchCharacters = async (term: string) => {
     const response = await axios.get('characters', { params: { q: term } });
