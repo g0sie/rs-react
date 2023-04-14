@@ -4,7 +4,7 @@ import ModalContext from '../../context/ModalContext';
 import { motion } from 'framer-motion';
 
 import Backdrop from '../Backdrop/Backdrop';
-import HeartIcon from '../../assets/icons/HeartIcon';
+import HeartIcon from '../../ui/HeartIcon';
 
 import './Modal.css';
 

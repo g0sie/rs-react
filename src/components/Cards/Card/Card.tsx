@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ModalContext from '../../../context/ModalContext';
 
-import HeartIcon from '../../../assets/icons/HeartIcon';
+import HeartIcon from '../../../ui/HeartIcon';
 
 import { CharacterInterface } from '../../../interfaces/CharacterInterface';
 
