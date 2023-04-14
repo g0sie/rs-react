@@ -48,7 +48,7 @@ const Modal = () => {
         </div>
         <div className="modal__content">
           <section className="modal-left">
-            <img src={modal.character?.images.webp.image_url} />
+            <img className="max-h-80" src={modal.character?.images.webp.image_url} />
             <h2 className="text-slate-200 text-2xl sm:pt-5 pt-1">{modal.character?.name}</h2>
             <p className="text-slate-400 text-base">{modal.character?.name_kanji}</p>
             <p className="text-cyan-300 text-lg flex gap-1.5">
