@@ -20,7 +20,7 @@ const Home = () => {
 
   return (
     <main className="page flex flex-col gap-10 items-center pb-12">
-      <SearchBar onSearch={searchCharacters} />
+      <SearchBar handleSearch={searchCharacters} />
       <Cards characters={characters} />
     </main>
   );

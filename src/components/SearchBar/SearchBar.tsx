@@ -1,35 +1,22 @@
-import { ChangeEvent, FormEvent, useState, useEffect } from 'react';
+import { ChangeEvent, FormEvent } from 'react';
+import { useLocalStorage } from 'usehooks-ts';
 
 interface SearchBarProps {
-  onSearch: (term: string) => void;
+  handleSearch: (term: string) => void;
 }
 
 const SearchBar = (props: SearchBarProps) => {
-  const [term, setTerm] = useState<string>('');
-
-  const getTermFromLocalStorage = () => {
-    const term = localStorage.getItem('term');
-    return term ?? '';
-  };
-
-  const saveTermInLocalStorage = (term: string) => {
-    localStorage.setItem('term', term);
-  };
+  const [term, setTerm] = useLocalStorage<string>('term', '');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newTerm = e.target.value;
     setTerm(newTerm);
-    saveTermInLocalStorage(newTerm);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    props.onSearch(term);
+    props.handleSearch(term);
   };
-
-  useEffect(() => {
-    setTerm(getTermFromLocalStorage());
-  }, []);
 
   return (
     <form
