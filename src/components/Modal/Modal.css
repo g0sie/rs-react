@@ -1,13 +1,28 @@
 .modal {
+  --padding: 1rem;
+
+  position: relative;
   width: clamp(70%, 700px, 90%);
   height: clamp(70%, 600px, 90%);
-
   margin: auto;
-  padding: 1rem;
+  padding: var(--padding);
   border-radius: 12px;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: var(--padding);
+  right: var(--padding);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal__content {
+  height: 100%;
+
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--padding);
 }
 
 .modal-left {
@@ -21,7 +36,7 @@
   overflow-y: auto;
   max-height: 100%;
   flex-grow: 1;
-  padding-right: 1rem;
+  padding-right: calc(var(--padding) * 2.3);
 }
 
 .modal ::-webkit-scrollbar {
@@ -29,6 +44,7 @@
 }
 
 .modal ::-webkit-scrollbar-track {
+  margin-top: calc(var(--padding) * 3);
   background: transparent;
 }
 
@@ -39,13 +55,20 @@
 }
 
 @media (max-width: 630px) {
-  .modal {
+  .modal__content {
     flex-direction: column;
+  }
+  .modal-left {
+    flex-basis: 0;
   }
   .modal-left img {
     display: none;
   }
   .modal-right {
     flex-basis: 100%;
+    padding-right: var(--padding);
+  }
+  .modal ::-webkit-scrollbar-track {
+    margin-top: 0;
   }
 }
