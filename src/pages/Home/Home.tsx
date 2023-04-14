@@ -5,30 +5,27 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import Cards from '../../components/Cards/Cards';
 
 import { CharacterInterface } from '../../interfaces/CharacterInterface';
-import { characters as loadingCharacters } from '../../components/Cards/characters.example';
 
 import axios from '../../api/axios';
+import Loader from '../../ui/Loader/Loader';
 
 const Home = () => {
   const [characters, setCharacters] = useState<CharacterInterface[]>([]);
-  const loading = useBoolean(true);
+  const isLoading = useBoolean(true);
 
   const searchCharacters = async (term: string) => {
-    loading.setTrue();
+    isLoading.setTrue();
     const response = await axios.get('characters', { params: { q: term } });
     const data = JSON.parse(await response.data);
     const characters = data.data;
     setCharacters(characters);
-    loading.setFalse();
+    isLoading.setFalse();
   };
 
   return (
     <main className="page flex flex-col gap-10 items-center pb-12">
       <SearchBar handleSearch={searchCharacters} />
-      <Cards
-        isLoading={loading.value}
-        characters={loading.value ? loadingCharacters : characters}
-      />
+      {isLoading.value ? <Loader /> : <Cards characters={characters} />}
     </main>
   );
 };
