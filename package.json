@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "lint": "prettier --check . && eslint src",
     "format": "prettier --write .",
-    "test": "vitest run --coverage"
+    "test": "vitest",
+    "testui": "vitest --ui",
+    "coverage": "vitest run --coverage"
   },
   "husky": {
     "hooks": {
@@ -39,6 +41,7 @@
     "@typescript-eslint/parser": "^5.22.0",
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.3",
+    "@vitest/ui": "^0.30.1",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.5.0",
