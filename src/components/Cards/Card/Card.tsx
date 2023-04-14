@@ -16,6 +16,7 @@ const Card = (props: CardProps) => {
     <div
       onClick={() => modal.open(props.character)}
       className="p-4 bg-slate-800 rounded-xl shadow-xl shadow-cyan-800/10 hover:shadow-cyan-300/10 hover:cursor-pointer"
+      data-testid="card"
     >
       <img src={props.character.images.webp.image_url} />
       <section className="flex flex-col items-center pt-3 text-center">
