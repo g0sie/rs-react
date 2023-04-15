@@ -1,5 +1,6 @@
-import { ChangeEvent, FormEvent, useEffect } from 'react';
+import { ChangeEvent, FormEvent } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
+import useMountEffect from '../../hooks/useMountEffect';
 
 interface SearchBarProps {
   handleSearch: (term: string) => void;
@@ -18,9 +19,9 @@ const SearchBar = (props: SearchBarProps) => {
     props.handleSearch(term);
   };
 
-  useEffect(() => {
+  useMountEffect(() => {
     props.handleSearch(term);
-  }, []);
+  });
 
   return (
     <form
