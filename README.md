@@ -14,6 +14,7 @@ Project created for [RS School React Course](https://rs.school/react/). It provi
    1. [Week 2 - Forms using uncontrolled components (with refs)](#week-2---forms-using-uncontrolled-components-with-refs)
 3. [Local setup](#local-setup)
    1. [Additional commands](#additional-commands)
+4. [Sources](#sources)
 
 ## Technologies
 
@@ -64,3 +65,8 @@ npm run lint
 ```
 npm test
 ```
+
+## Sources
+
+- Modal animation - https://www.youtube.com/watch?v=SuqU904ZHA4
+- Loader - https://uiverse.io/Nawsome/blue-dragon-70

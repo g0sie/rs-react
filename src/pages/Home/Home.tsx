@@ -1,27 +1,31 @@
 import { useState } from 'react';
+import { useBoolean } from 'usehooks-ts';
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Cards from '../../components/Cards/Cards';
 
 import { CharacterInterface } from '../../interfaces/CharacterInterface';
-import { characters as initialCharacters } from '../../components/Cards/characters.example';
+
+import axios from '../../api/axios';
+import Loader from '../../ui/Loader/Loader';
 
 const Home = () => {
-  const [characters, setCharacters] = useState<CharacterInterface[]>(initialCharacters);
+  const [characters, setCharacters] = useState<CharacterInterface[]>([]);
+  const isLoading = useBoolean(true);
 
-  const termMatchesCharacter = (term: string, character: CharacterInterface) => {
-    return character.name.toLowerCase().includes(term.toLowerCase());
-  };
-
-  const filterCharacters = (term: string) => {
-    const filtered = initialCharacters.filter((character) => termMatchesCharacter(term, character));
-    setCharacters(filtered);
+  const searchCharacters = async (term: string) => {
+    isLoading.setTrue();
+    const response = await axios.get('characters', { params: { q: term } });
+    const data = JSON.parse(await response.data);
+    const characters = data.data;
+    setCharacters(characters);
+    isLoading.setFalse();
   };
 
   return (
     <main className="page flex flex-col gap-10 items-center pb-12">
-      <SearchBar onSearch={filterCharacters} />
-      <Cards characters={characters} />
+      <SearchBar handleSearch={searchCharacters} />
+      {isLoading.value ? <Loader /> : <Cards characters={characters} />}
     </main>
   );
 };
