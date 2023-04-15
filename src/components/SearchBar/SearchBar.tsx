@@ -1,5 +1,9 @@
 import { ChangeEvent, FormEvent } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { selectSearchedTerm } from '../../pages/Home/searchSlice';
+import { setTerm } from '../../pages/Home/searchSlice';
+
 import useMountEffect from '../../hooks/useMountEffect';
 
 interface SearchBarProps {
@@ -7,11 +11,12 @@ interface SearchBarProps {
 }
 
 const SearchBar = (props: SearchBarProps) => {
-  const [term, setTerm] = useLocalStorage<string>('term', '');
+  const dispatch = useDispatch();
+  const term = useSelector(selectSearchedTerm);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newTerm = e.target.value;
-    setTerm(newTerm);
+    dispatch(setTerm(newTerm));
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
