@@ -8,7 +8,7 @@ interface ModalContextType {
 }
 
 const ModalContext = createContext<ModalContextType>({
-  open: (character: CharacterInterface) => {},
+  open: (character: CharacterInterface) => console.log(character.name),
   close: () => {},
   character: null,
 });
