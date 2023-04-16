@@ -19,7 +19,7 @@ interface FormData {
 }
 
 interface CreateCardFormProps {
-  onSubmit: (character: CharacterInterface) => void;
+  handleSubmit: (character: CharacterInterface) => void;
 }
 
 const CreateCardForm = (props: CreateCardFormProps) => {
@@ -63,7 +63,7 @@ const CreateCardForm = (props: CreateCardFormProps) => {
   function submitData(data: FormData) {
     const character = getCharacterFromData(data);
     setShowDataHasBeenSaved(true);
-    props.onSubmit(character);
+    props.handleSubmit(character);
     reset();
   }
 
