@@ -4,7 +4,7 @@ import CreateCardForm from './CreateCardForm';
 
 describe('CreateCardForm', () => {
   it('Renders the form', () => {
-    render(<CreateCardForm onSubmit={() => {}} />);
+    render(<CreateCardForm handleSubmit={() => {}} />);
     expect(screen.getByTestId('create-card')).toBeInTheDocument();
     expect(screen.getByLabelText('Name*')).toBeInTheDocument();
     expect(screen.getByLabelText('Name in kanji')).toBeInTheDocument();
