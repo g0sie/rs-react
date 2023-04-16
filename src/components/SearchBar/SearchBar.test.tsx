@@ -4,6 +4,8 @@ import { vi } from 'vitest';
 import SearchBar from './SearchBar';
 
 import { renderWithProvider } from '../../utils/renderWithProvider';
+import { setupStore } from '../../store';
+import { setTerm } from '../../pages/Home/searchSlice';
 
 describe('SearchBar', () => {
   it('Searches on input', () => {
@@ -30,5 +32,15 @@ describe('SearchBar', () => {
       renderWithProvider(<SearchBar handleSearch={mockedSearch} searchOnMount={false} />);
       expect(mockedSearch).toHaveBeenCalledTimes(0);
     });
+  });
+
+  it('Searches for stored term', () => {
+    const store = setupStore();
+    store.dispatch(setTerm('kakashi'));
+    const mockedSearch = vi.fn();
+    renderWithProvider(<SearchBar handleSearch={mockedSearch} searchOnMount={true} />, { store });
+
+    expect(mockedSearch).toHaveBeenCalledWith('kakashi');
+    expect(mockedSearch).toHaveBeenCalledTimes(1);
   });
 });
