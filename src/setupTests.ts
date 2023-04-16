@@ -1,11 +1,13 @@
 import matchers from '@testing-library/jest-dom/matchers';
 import { expect } from 'vitest';
 
-expect.extend(matchers);
+import 'whatwg-fetch';
 
 import { server } from './api/mocks/server';
 import { apiSlice } from './api/apiSlice';
 import { setupStore } from './store';
+
+expect.extend(matchers);
 
 const store = setupStore();
 
