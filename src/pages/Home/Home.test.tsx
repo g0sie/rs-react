@@ -1,7 +1,9 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
+
+import { renderWithProvider } from '../../utils/renderWithProvider';
 
 import Home from './Home';
 
@@ -79,7 +81,7 @@ afterAll(() => server.close());
 
 describe('Home', () => {
   it('Searches for cards successfully', async () => {
-    render(<Home />);
+    renderWithProvider(<Home />);
     const searchBar = screen.getByRole('textbox');
 
     fireEvent.change(searchBar, { target: { value: 'kakashi' } });

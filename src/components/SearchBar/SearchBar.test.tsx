@@ -1,4 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
+import { renderWithProvider } from '../../utils/renderWithProvider';
+
 import { vi } from 'vitest';
 
 import SearchBar from './SearchBar';
@@ -9,7 +11,7 @@ describe('SearchBar', () => {
     localStorage.removeItem('term');
     const storedTerm = localStorage.getItem('term');
 
-    render(<SearchBar handleSearch={mockedSearch} />);
+    renderWithProvider(<SearchBar handleSearch={mockedSearch} />);
 
     expect(storedTerm).toEqual(null);
     expect(mockedSearch).toHaveBeenCalledTimes(1);
@@ -18,7 +20,7 @@ describe('SearchBar', () => {
 
   it('Searches on input', () => {
     const mockedSearch = vi.fn();
-    render(<SearchBar handleSearch={mockedSearch} />);
+    renderWithProvider(<SearchBar handleSearch={mockedSearch} />);
     const searchBar = screen.getByRole('textbox');
 
     fireEvent.change(searchBar, { target: { value: 'naruto' } });
