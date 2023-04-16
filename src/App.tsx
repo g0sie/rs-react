@@ -12,6 +12,9 @@ import About from './pages/About';
 import Forms from './pages/Forms/Forms';
 import NotFound404 from './pages/404';
 
+import { Provider } from 'react-redux';
+import { store } from './store';
+
 interface page {
   path: string;
   name: string;
@@ -36,5 +39,9 @@ export const routes = createRoutesFromElements(
 const router = createBrowserRouter(routes);
 
 export const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 };
