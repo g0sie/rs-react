@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     if (data) dispatch(setCharacters(data.data));
-  }, [data]);
+  }, [data, dispatch]);
 
   return (
     <main className="page flex flex-col gap-10 items-center pb-12">
