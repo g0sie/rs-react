@@ -8,6 +8,7 @@ import useMountEffect from '../../hooks/useMountEffect';
 
 interface SearchBarProps {
   handleSearch: (term: string) => void;
+  searchOnMount: boolean;
 }
 
 const SearchBar = (props: SearchBarProps) => {
@@ -25,7 +26,9 @@ const SearchBar = (props: SearchBarProps) => {
   };
 
   useMountEffect(() => {
-    props.handleSearch(term);
+    if (props.searchOnMount) {
+      props.handleSearch(term);
+    }
   });
 
   return (

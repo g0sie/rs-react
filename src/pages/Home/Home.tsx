@@ -1,24 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { useLazySearchCharactersQuery } from '../../api/apiSlice';
+import { selectSearchedCharacters } from './searchSlice';
+import { setCharacters } from './searchSlice';
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Cards from '../../components/Cards/Cards';
 
-import { CharacterInterface } from '../../interfaces/CharacterInterface';
-
 import Loader from '../../ui/Loader/Loader';
-import { useLazySearchCharactersQuery } from '../../api/apiSlice';
 
 const Home = () => {
-  const [trigger, { data, isFetching }] = useLazySearchCharactersQuery();
-  const [characters, setCharacters] = useState<CharacterInterface[]>([]);
+  const [triggerSearch, { data, isFetching }] = useLazySearchCharactersQuery();
+  const characters = useSelector(selectSearchedCharacters);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (data) setCharacters(data.data);
+    if (data) dispatch(setCharacters(data.data));
   }, [data]);
 
   return (
     <main className="page flex flex-col gap-10 items-center pb-12">
-      <SearchBar handleSearch={trigger} />
+      <SearchBar handleSearch={triggerSearch} searchOnMount={characters.length === 0} />
       {isFetching ? <Loader /> : <Cards characters={characters} />}
     </main>
   );
