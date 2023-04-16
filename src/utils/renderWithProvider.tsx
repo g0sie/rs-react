@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import type { PreloadedState } from '@reduxjs/toolkit';
@@ -20,7 +20,7 @@ export function renderWithProvider(
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {
-  function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
+  function Wrapper({ children }: { children: ReactElement }): JSX.Element {
     return <Provider store={store}>{children}</Provider>;
   }
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
