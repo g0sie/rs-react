@@ -23,8 +23,8 @@ interface page {
 
 export const pages: page[] = [
   { name: 'Home', path: '/', element: <Home /> },
-  { name: 'About Us', path: 'about', element: <About /> },
-  { name: 'Forms', path: 'forms', element: <Forms /> },
+  { name: 'About', path: 'about', element: <About /> },
+  { name: 'My Cards', path: 'forms', element: <Forms /> },
 ];
 
 export const routes = createRoutesFromElements(

@@ -19,6 +19,6 @@ describe('Header', () => {
         <Header />
       </MemoryRouter>
     );
-    expect(screen.getByRole('link', { name: 'About Us' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
   });
 });

@@ -14,7 +14,7 @@ describe('App', () => {
     it('Renders About page on /about', () => {
       const router = createMemoryRouter(routes, { initialEntries: ['/about'] });
       render(<RouterProvider router={router} />);
-      expect(screen.getByText('About Us')).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: /about/i })).toBeInTheDocument();
     });
 
     it('Renders 404 page if invalid path', () => {
