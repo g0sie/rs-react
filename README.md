@@ -12,6 +12,9 @@ Project created for [RS School React Course](https://rs.school/react/). It provi
 2. [Covered topics](#covered-topics)
    1. [Week 1 - Class components, React Router, Unit tests](#week-1---class-components-react-router-unit-tests)
    1. [Week 2 - Forms using uncontrolled components (with refs)](#week-2---forms-using-uncontrolled-components-with-refs)
+   1. [Week 3 - React Hook Form, Functional components](#week-3---react-hook-form-functional-components)
+   1. [Week 4 - API](#week-4---api)
+   1. [Week 5 - Redux Toolkit, RTK Query](#week-5---redux-toolkit-rtk-query)
 3. [Local setup](#local-setup)
    1. [Additional commands](#additional-commands)
 4. [Sources](#sources)
@@ -41,6 +44,21 @@ Project created for [RS School React Course](https://rs.school/react/). It provi
 
 - task: https://github.com/rolling-scopes-school/tasks/tree/master/react/modules/module02
 - branch with solution: https://github.com/g0sie/rs-react/tree/week-2
+
+### Week 3 - React Hook Form, Functional components
+
+- task: https://github.com/rolling-scopes-school/tasks/tree/master/react/modules/module03
+- branch with solution: https://github.com/g0sie/rs-react/tree/week-3
+
+### Week 4 - API
+
+- task: https://github.com/rolling-scopes-school/tasks/tree/master/react/modules/module04
+- branch with solution: https://github.com/g0sie/rs-react/tree/week-4
+
+### Week 5 - Redux Toolkit, RTK Query
+
+- task: https://github.com/rolling-scopes-school/tasks/tree/master/react/modules/module05
+- branch with solution: https://github.com/g0sie/rs-react/tree/week-5
 
 ## Local setup
 
