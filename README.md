@@ -21,10 +21,14 @@ Project created for [RS School React Course](https://rs.school/react/). It provi
 - Node 19.9
 - React 18.2
 - TypeScript 4.9
+- Redux Toolkit 1.9
 - Tailwind CSS 3.2
 - Vite 4.2
 - Vitest 0.29
 - React Router 6.9
+- React Hook Form 7.43
+- Zod 3.21
+- Framer Motion 10.11
 
 ## Covered topics
 
