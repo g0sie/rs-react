@@ -1,4 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderWithProvider } from '../../utils/renderWithProvider';
+
 import { vi } from 'vitest';
 
 import Forms from './Forms';
@@ -32,20 +34,20 @@ const setup = () => {
 
 describe('Forms', () => {
   it('Renders heading', () => {
-    render(<Forms />);
+    renderWithProvider(<Forms />);
     expect(screen.getByText('Create an anime character')).toBeInTheDocument();
   });
   it('Renders form', () => {
-    render(<Forms />);
+    renderWithProvider(<Forms />);
     expect(screen.getByTestId('create-card')).toBeInTheDocument();
   });
   it('Renders cards', () => {
-    render(<Forms />);
+    renderWithProvider(<Forms />);
     expect(screen.getByTestId('cards')).toBeInTheDocument();
   });
   it('Creates a card successfully', async () => {
     global.URL.createObjectURL = vi.fn();
-    render(<Forms />);
+    renderWithProvider(<Forms />);
     const {
       nameInput,
       kanjiNameInput,

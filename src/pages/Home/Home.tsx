@@ -1,31 +1,28 @@
-import { useState } from 'react';
-import { useBoolean } from 'usehooks-ts';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { useLazySearchCharactersQuery } from '../../api/apiSlice';
+import { selectSearchedCharacters } from './searchSlice';
+import { setCharacters } from './searchSlice';
 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Cards from '../../components/Cards/Cards';
 
-import { CharacterInterface } from '../../interfaces/CharacterInterface';
-
-import axios from '../../api/axios';
 import Loader from '../../ui/Loader/Loader';
 
 const Home = () => {
-  const [characters, setCharacters] = useState<CharacterInterface[]>([]);
-  const isLoading = useBoolean(true);
+  const [triggerSearch, { data, isFetching }] = useLazySearchCharactersQuery();
+  const characters = useSelector(selectSearchedCharacters);
+  const dispatch = useDispatch();
 
-  const searchCharacters = async (term: string) => {
-    isLoading.setTrue();
-    const response = await axios.get('characters', { params: { q: term } });
-    const data = JSON.parse(await response.data);
-    const characters = data.data;
-    setCharacters(characters);
-    isLoading.setFalse();
-  };
+  useEffect(() => {
+    if (data) dispatch(setCharacters(data.data));
+  }, [data, dispatch]);
 
   return (
     <main className="page flex flex-col gap-10 items-center pb-12">
-      <SearchBar handleSearch={searchCharacters} />
-      {isLoading.value ? <Loader /> : <Cards characters={characters} />}
+      <SearchBar handleSearch={triggerSearch} searchOnMount={characters.length === 0} />
+      {isFetching ? <Loader /> : <Cards characters={characters} />}
     </main>
   );
 };
