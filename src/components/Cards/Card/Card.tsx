@@ -18,7 +18,7 @@ const Card = (props: CardProps) => {
       className="p-4 bg-slate-800 rounded-xl shadow-xl shadow-cyan-800/10 hover:shadow-cyan-300/10 hover:cursor-pointer"
       data-testid="card"
     >
-      <img src={props.character.images.webp.image_url} />
+      <img src={props.character.images.webp.image_url} className="mx-auto" />
       <section className="flex flex-col items-center pt-3 text-center">
         <h2 className="text-slate-200 text-2xl">{props.character.name}</h2>
         <p className="text-slate-400 text-base">{props.character.name_kanji}</p>
