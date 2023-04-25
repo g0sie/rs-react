@@ -1,10 +1,15 @@
-# animecharacters123
+# anime-characters-123
 
 ![Screenshot of the app](./screenshot.png)
 
-**The app:** https://animecharacters123.netlify.app/
+**The app:** ✨ https://animecharacters123.netlify.app/ ✨
 
-Project created for [RS School React Course](https://rs.school/react/). It provides anime character cards that you can search of. You can create the cards yourself on the Forms page. Each card has two sides: front with image and name, back with description.
+Project created for [RS School React Course](https://rs.school/react/).
+
+⚙️ Main features:
+
+- search for an anime character
+- create your own characters
 
 ## Table of Contents
 
